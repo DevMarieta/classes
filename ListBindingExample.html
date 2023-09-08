@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="myList" content="myMariya">
+    <title>myList</title>
+</head>
+<h2 id="title">Classes: html List Binding</h2>
+
+<ul id="myList">
+<!-- "myList" ще бъде изпратен към js кода чрез променлива--> 
+<!-- тук javascript ще попълни списъка-->
+</ul>  
+<script src="JSmyList.js"></script>
+<script>
+       //променлива вход за html кода:
+const myList = document.getElementById("myList");
+      //свързване/регистриране на ListBinding class + html myList
+const ListBind = new ListBinding(myList);
+      //извикване на метода за изчистване еле. от физи.html списък
+      ListBind.update();
+      ListBind.add('Mariya, Mariya, Mariya');
+     
+
+</script>
+<body>
+    
+</body>
+</html>
