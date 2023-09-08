@@ -5,25 +5,57 @@
     <meta name="myList" content="myMariya">
     <title>myList</title>
 </head>
-<h2 id="title">Classes: html List Binding</h2>
-
-<ul id="myList">
-<!-- "myList" ще бъде изпратен към js кода чрез променлива--> 
-<!-- тук javascript ще попълни списъка-->
-</ul>  
-<script src="JSmyList.js"></script>
-<script>
-       //променлива вход за html кода:
-const myList = document.getElementById("myList");
-      //свързване/регистриране на ListBinding class + html myList
-const ListBind = new ListBinding(myList);
-      //извикване на метода за изчистване еле. от физи.html списък
-      ListBind.update();
-      ListBind.add('Mariya, Mariya, Mariya');
-     
-
-</script>
 <body>
-    
+    <h2 id="title">Classes: HTML List Binding</h2>
+
+    <ul id="myList">
+        <!-- "myList" ще бъде изпратен към JS кода чрез променлива --> 
+        <!-- Тук JavaScript ще попълни списъка -->
+    </ul>  
+    <script src="JSmyList.js"></script>
+    <script>
+        // Упражнение: Връзка между classes и HTML
+
+        class ListBinding {
+            constructor(element) {
+                this.listElement = element;
+                this.textList = [
+                    'MARIYIKE! Are you listening?'
+                ];
+            }
+
+            static createListItem(text) {
+                const li = document.createElement('li');
+                li.textContent = text;
+                return li;
+            }
+
+            update() {
+                while (this.listElement.firstChild) {
+                    this.listElement.removeChild(this.listElement.firstChild);
+                }
+
+                for (const text of this.textList) {
+                    this.listElement.appendChild(ListBinding.createListItem(text));
+                }
+            }
+
+            add(text) {
+                this.textList.push(text);
+                this.update();
+            }
+
+            remove(index) {
+                this.textList.splice(index, 1);
+                this.update();
+            }
+        }
+
+        const myList = document.getElementById("myList");
+        const ListBind = new ListBinding(myList);
+
+        ListBind.update();
+        ListBind.add('Mariya, Mariya, Mariya');
+    </script>
 </body>
 </html>
